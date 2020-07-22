@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="RibAqMessage" targetNamespace="http://xmlns.oracle.com/SLRappln/InsertToRibAq/RibAqMessage" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:client="http://xmlns.oracle.com/SLRappln/InsertToRibAq/RibAqMessage" xmlns:ns1="http://www.oracle.com/retail/integration/rib/RibMessages" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype">
+   <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://xmlns.oracle.com/SLRappln/InsertToRibAq/RibAqMessage" schemaLocation="../Schemas/RibAqMessage.xsd"/>
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema">
+         <import namespace="http://www.oracle.com/retail/integration/rib/RibMessages" schemaLocation="../Schemas/RibMessages.xsd"/>
+      </schema>
+   </wsdl:types>
+   <wsdl:message name="RibAqMessageRequestMessage">
+      <wsdl:part name="payload" element="ns1:RibMessages"/>
+   </wsdl:message>
+   <wsdl:message name="RibAqMessageResponseMessage">
+      <wsdl:part name="payload" element="client:processResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="RibAqMessage">
+      <wsdl:operation name="process">
+         <wsdl:input message="client:RibAqMessageRequestMessage"/>
+         <wsdl:output message="client:RibAqMessageResponseMessage"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <plnk:partnerLinkType name="RibAqMessage">
+      <plnk:role name="RibAqMessageProvider" portType="client:RibAqMessage"/>
+   </plnk:partnerLinkType>
+</wsdl:definitions>

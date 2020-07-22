@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<adapter-config name="InsertToRibAq" adapter="jms" wsdlLocation="../WSDLs/InsertToRibAq.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+   <connection-factory UIConnectionName="DevServer" location="eis/aqjms/RibTopic" UIJmsProvider="OJMS"/>
+   <endpoint-interaction portType="Produce_Message_ptt" operation="Produce_Message">
+      <interaction-spec className="oracle.tip.adapter.jms.outbound.JmsProduceInteractionSpec">
+         <property name="TimeToLive" value="0"/>
+         <property name="DestinationName" value="jms/etRTVReqFromRMS"/>
+         <property name="DeliveryMode" value="Persistent"/>
+         <property name="PayloadType" value="TextMessage"/>
+      </interaction-spec>
+   </endpoint-interaction>
+</adapter-config>
